@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>
+      Router passwords - Credits to http://routerpasswords.com/
+    </title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" media="screen"/>
+    <style media="screen">
+    td {
+      word-break: break-all;
+    }
+    .search-container {
+      padding-top: 15px;
+      background: #eee;
+      position: fixed;
+      z-index: 10;
+    }
+    .table-container {
+      padding-top: 70px
+    }
+    [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+      display: none !important;
+    }
+    </style>
+
+    <script src="https://cdn.bootcss.com/angular.js/1.5.10/angular.min.js"></script>
+  </head>
+  <body>
+    <div ng-app="myapp" ng-controller="main" ng-cloak>
+      <div class="container-fluid search-container">
+        <div class="row">
+          <div class="col-xs-12">
+            <form ng-submit="search()">
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="text" class="form-control" autofocus ng-model="keyword" id="search"/>
+                  <div class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">
+                      Filter
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid table-container">
+        <div class="row">
+          <div class="col-xs-12">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    Manufacturer
+                  </th>
+                  <th>
+                    Model
+                  </th>
+                   <th>
+                    Protocol
+                  </th>
+                  <th>
+                    Username
+                  </th>
+                  <th>
+                    Password
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="d in data | filter:keyword">
+                  <td>
+                    {{ d.Manufacturer }}
+                  </td>
+                  <td>
+                    {{ d.Model }}
+                  </td>
+                  <td>
+                    {{ d.Protocol }}
+                  </td>
+                  <td>
+                    {{ d.Username }}
+                  </td>
+                  <td>
+                    {{ d.Password }}
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var app = angular.module('myapp', []);
+      app.controller('main', ['$scope', '$http',
+        function($scope, $http) {
+          $scope.load = function() {
+            $http.get('data.json').then(function(res) {
+              $scope.data = res.data;
+            })
+          }
+
+          $scope.load();
+        }
+      ]);
+    </script>
+  </div>
+</body>
+</html>
