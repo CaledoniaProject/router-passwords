@@ -4,8 +4,14 @@
 
 最后同步时间 2018.1.4
 
-# 截图
+# 用法
+
+复制 `src` 到 web 目录，e.g
+
+```
+cp -R src /var/www/html/router-passwords/
+```
+
+浏览器打开 `http://xxxx/router-passwords` 即可，完全离线查询
 
 ![screenshot](https://raw.githubusercontent.com/CaledoniaProject/router-passwords/master/screenshots/webui.jpg)
-
-
