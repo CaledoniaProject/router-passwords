@@ -102,7 +102,12 @@
           $scope.load = function() {
             $http.get('data.json').then(function(res) {
               $scope.data = res.data;
+
+              $http.get('data2.json').then(function(res) {
+                $scope.data = $scope.data.concat(res.data);
+              })
             })
+
           }
 
           $scope.load();

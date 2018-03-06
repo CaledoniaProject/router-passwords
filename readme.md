@@ -1,6 +1,6 @@
 # 路由器默认密码
 
-数据来自 [http://routerpasswords.com/](http://routerpasswords.com/)，只是这个网站实在是太慢了，还要发POST请求才能看到密码，所以我做个单页面版本，可以在本地实时查询
+数据来自 [http://routerpasswords.com/](http://routerpasswords.com/) 和 [https://cirt.net/passwords](https://cirt.net/passwords)，只是这几个网站实在是太慢了，还要发POST请求才能看到密码，所以我做个单页面版本，可以在本地实时查询
 
 最后同步时间 2018.1.4
 
